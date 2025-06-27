@@ -205,10 +205,10 @@ LOGGING = {
 }
 
 # # Set session to expire after 10 minutes (600 seconds) of inactivity
-# SESSION_COOKIE_AGE = 30  # seconds
+SESSION_COOKIE_AGE = 600  # seconds
 
-# # Reset session expiry on every request (sliding expiration)
-# SESSION_SAVE_EVERY_REQUEST = True
+# Reset session expiry on every request (sliding expiration)
+SESSION_SAVE_EVERY_REQUEST = True
 
-# # Optional: Expire session when browser closes
-# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# Optional: Expire session when browser closes
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

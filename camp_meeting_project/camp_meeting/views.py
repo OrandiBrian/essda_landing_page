@@ -411,6 +411,7 @@ def finance_report(request):
         'is_export': False
     })
 
+# user login
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -423,6 +424,7 @@ def user_login(request):
             messages.error(request, "Invalid username or password.")
     return render(request, 'camp_meeting/login.html')
 
+# user logout
 def user_logout(request):
     logout(request)
     messages.success(request, "You have been logged out.")
