@@ -1,27 +1,8 @@
-# requirements.txt
 Django==4.2.7
 django-cors-headers==4.3.1
 python-decouple==3.8
 requests==2.31.0
 python-dateutil==2.8.2
-Pillow==10.1.0
+Pillow
 django-jazzmin==3.0.1
-
-# For M-Pesa integration (optional, depending on your choice)
-python-mpesa==1.2.0
-
-# For production deployment
-gunicorn==21.2.0
-whitenoise==6.6.0
-
-# For database (choose one)
-# PostgreSQL
-psycopg2-binary==2.9.9
-
-# MySQL (alternative)
-# mysqlclient==2.2.0
-
-# SQLite is included with Django by default
-
-# For development
-django-debug-toolbar==4.2.0
+WeasyPrint
