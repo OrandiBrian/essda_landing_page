@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESSDA - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+        /* Optional fallback for older browsers */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: brightness(0.4); /* Dark overlay */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-gray-900">
+
+    <!-- Navbar -->
+    <header class="navbar bg-green-900 text-neutral-content shadow-md px-4 md:px-8 sticky top-0 z-50">
+        <div class="flex-1 flex items-center space-x-3">
+            <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center">
+                <i class="fas fa-fire text-white text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xl text-white font-bold leading-none">SDA CHURCH</h1>
+                <p class="text-sm text-yellow-400">Eden Springs</p>
+            </div>
+        </div>
+
+        <div class="flex-none flex justify-center items-center space-x-4">
+            <div>
+                <a href="{% url 'camp_meeting:landing' %}" class="text-sm text-white hover:text-yellow-400 transition duration-200">Home</a>
+            </div>
+            <div>
+                <a href="#contribute" class="btn btn-warning btn-sm md:btn-md">
+                    <i class="fas fa-hand-holding-heart mr-2"></i> Give
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Card -->
+    <main class="flex-1 flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+            <<div class="card backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl text-gray-900">
+    <div class="card-body">
+        <h2 class="card-title text-2xl mb-4 flex justify-center text-white">Login</h2>
+
+        {% if messages %}
+            <ul class="mb-4 space-y-2">
+                {% for message in messages %}
+                    <li class="text-{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-medium text-white">Username</span>
+                </label>
+                <input type="text" name="username" placeholder="Enter username"
+                       class="input input-bordered w-full bg-white/80 text-gray-900 placeholder-gray-600" required>
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-medium text-white">Password</span>
+                </label>
+                <input type="password" name="password" placeholder="Enter password"
+                       class="input input-bordered w-full bg-white/80 text-gray-900 placeholder-gray-600" required>
+            </div>
+
+            <button type="submit" class="btn btn-warning w-full btn-lg text-gray-900">
+                <i class="fas fa-sign-in-alt mr-2"></i>
+                Login
+            </button>
+        </form>
+    </div>
+</div>
+
+        </div>
+    </main>
+
+</body>
+</html>

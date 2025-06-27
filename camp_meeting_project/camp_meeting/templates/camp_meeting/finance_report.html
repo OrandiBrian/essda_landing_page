@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESSDA Camp Meeting Contributions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen">
+    <header id="about" class="navbar bg-green-900 text-neutral-content shadow-lg sticky top-0 z-50">
+        <div class="navbar-start">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-fire text-white text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold">SDA CHURCH</h1>
+                    <p class="text-sm text-yellow-400">EDEN SPRINGS</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navbar-end space space-x-4">
+            <a href="{% url 'camp_meeting:landing' %}" class="hover:text-yellow-400">Home</a>
+            <a href="{% url 'camp_meeting:login' %}" class="hover:text-yellow-400">Logout</a>
+            <a href="#contribute" class="btn btn-warning btn-sm md:btn-md">
+                <i class="fas fa-hand-holding-heart mr-2"></i>
+                Give
+            </a>
+        </div>
+    </header>
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+            <h2 class="text-xl sm:text-2xl font-bold">✅ Successful Transactions</h2>
+            <a href="?format=pdf" target="_blank" class="btn btn-primary w-full sm:w-auto">
+                <i class="fas fa-file-pdf mr-2"></i> Download PDF
+            </a>
+        </div>
+
+        <!-- Responsive Table -->
+        <div class="overflow-x-auto bg-white rounded-lg shadow">
+            <table class="table table-zebra w-full text-sm sm:text-base">
+                <thead class="bg-base-200 text-gray-700">
+                    <tr>
+                        <th class="text-left whitespace-nowrap">Date</th>
+                        <th class="text-left whitespace-nowrap">Full Name</th>
+                        <th class="text-left whitespace-nowrap">Email</th>
+                        <th class="text-left whitespace-nowrap">Phone</th>
+                        <th class="text-left whitespace-nowrap">Amount</th>
+                        {% comment %} <th class="text-left whitespace-nowrap">Mpesa Code</th> {% endcomment %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tx in transactions %}
+                    <tr>
+                        <td class="whitespace-nowrap">{{ tx.created_at|date:"Y-m-d H:i" }}</td>
+                        <td class="whitespace-nowrap">{{ tx.full_name }}</td>
+                        <td class="whitespace-nowrap">{{ tx.email }}</td>
+                        <td class="whitespace-nowrap">{{ tx.phone_number }}</td>
+                        <td class="whitespace-nowrap">Ksh. {{ tx.amount }}</td>
+                        {% comment %} <td class="whitespace-nowrap">{{ tx.mpesa_transaction_id }}</td> {% endcomment %}
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center py-4 text-gray-500">No transactions found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Set logout after 10 minutes (600,000 ms) of inactivity
+        let logoutTimer;
+        function resetLogoutTimer() {
+            clearTimeout(logoutTimer);
+            logoutTimer = setTimeout(function() {
+                window.location.href = "{% url 'camp_meeting:login' %}?next={{ request.path }}";
+            }, 600000); // 10 minutes
+        }
+        document.onload = resetLogoutTimer;
+        document.onmousemove = resetLogoutTimer;
+        document.onkeypress = resetLogoutTimer;
+        document.onclick = resetLogoutTimer;
+    </script>
+
+</body> 
+</html>
