@@ -24,6 +24,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -212,3 +213,8 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 # Optional: Expire session when browser closes
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+JAZZMIN_SETTINGS = {
+    "site_title": "ESSDA Admin",
+    "copyright": "ESSDA 2025",
+}

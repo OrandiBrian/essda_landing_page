@@ -5,6 +5,7 @@ python-decouple==3.8
 requests==2.31.0
 python-dateutil==2.8.2
 Pillow==10.1.0
+django-jazzmin==3.0.1
 
 # For M-Pesa integration (optional, depending on your choice)
 python-mpesa==1.2.0
