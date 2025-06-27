@@ -426,4 +426,4 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     messages.success(request, "You have been logged out.")
-    return redirect(request, 'camp_meeting: login')
+    return redirect('camp_meeting:login')
