@@ -15,17 +15,18 @@ from django.views.decorators.http import require_http_methods
 from django.template.loader import render_to_string
 from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 # loading environment variables
 load_dotenv()
 
-# retrieving variables from environment
-CONSUMER_KEY = os.getenv('CONSUMER_KEY')
-CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
-MPESA_PASSKEY = os.getenv('MPESA_PASSKEY')
-MPESA_BASE_URL = os.getenv('MPESA_BASE_URL')
-MPESA_SHORTCODE = os.getenv('MPESA_SHORTCODE')
-CALLBACK_URL = os.getenv('CALLBACK_URL')
+# retrieving M-Pesa variables from Django settings
+CONSUMER_KEY = settings.CONSUMER_KEY
+CONSUMER_SECRET = settings.CONSUMER_SECRET
+MPESA_PASSKEY = settings.MPESA_PASSKEY
+MPESA_BASE_URL = settings.MPESA_BASE_URL
+MPESA_SHORTCODE = settings.MPESA_SHORTCODE
+CALLBACK_URL = settings.CALLBACK_URL
 
 def camp_meeting_landing(request):
     """Main landing page view for Camp Meeting 2025"""

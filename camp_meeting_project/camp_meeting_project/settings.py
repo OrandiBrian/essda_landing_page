@@ -105,6 +105,14 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='brianorandi97@gmail.com')
 
+# M-Pesa configuration
+CONSUMER_KEY = config('CONSUMER_KEY', default='')
+CONSUMER_SECRET = config('CONSUMER_SECRET', default='')
+MPESA_PASSKEY = config('MPESA_PASSKEY', default='')
+MPESA_BASE_URL = config('MPESA_BASE_URL', default='https://sandbox.safaricom.co.ke')
+MPESA_SHORTCODE = config('MPESA_SHORTCODE', default='174379')
+CALLBACK_URL = config('CALLBACK_URL', default='')
+
 # Security settings for production
 if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
